@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from '../services/fakeGenreService';
 import Pagination from "./common/pagination";
@@ -18,8 +19,12 @@ class Movies extends Component {
 
    componentDidMount = () => {
       const genres = [{ _id: '', name: "All" }, ...getGenres()];
+      const movies = getMovies();
+      for(let m of movies){
+         m.title = <Link to={'/movies/' + m._id}>{m.title}</Link>;
+      }
       this.setState({
-         movies: getMovies(),
+         movies,
          genres
       });
    }
@@ -51,13 +56,10 @@ class Movies extends Component {
    }
 
    getPagedData = () => {
-      const { length: count } = this.state.movies;
       const { pageSize, currentPage, selectedGenre, movies, sortColumn } = this.state;
-
       const filtered = selectedGenre && selectedGenre._id ? movies.filter(m => m.genre._id === selectedGenre._id) : movies;
       const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
       const paginatedMovies = paginate(sorted, currentPage, pageSize);
-
       return { totalCount: filtered.length, data: paginatedMovies };
    };
 
@@ -72,7 +74,7 @@ class Movies extends Component {
                <ListGroup items={this.state.genres} selectedItem={this.state.selectedGenre} onItemSelect={this.handleGenreSelect} />
             </div>
             <div className="col">
-               <p>Showing {totalCount} movies in the database.</p>
+               {/* <p>Showing {totalCount} movies in the database.</p> */}
                <MoviesTable sortColumn={sortColumn} movies={movies} onDelete={this.handleDelete} onLike={this.handleLike} onSort={this.handleSort} />
                <Pagination itemsCount={totalCount} pageSize={pageSize} currentPage={currentPage} onPageChange={this.handlePageChange} />
             </div>
