@@ -7,7 +7,6 @@ import ListGroup from "./common/listGroup"
 import { paginate } from "../utils/paginate";
 import MoviesTable from './moviesTable';
 import _ from 'lodash';
-import Input from './common/input';
 import SearchBox from './common/searchBox';
 
 class Movies extends Component {

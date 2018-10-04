@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Joi from 'joi-browser';
 import Form from './common/form';
 
-class LoginForm extends Form {
+class RegisterForm extends Form {
    state = {
-      data: { username: '', password: '', agreeTerms: true },
+      data: { username: '', password: '', name: '', agreeTerms: true },
       errors: {}
    }
 
    schema = {
-      username: Joi.string().min(6).max(20).required().label('Username'),
-      password: Joi.string().min(6).max(20).required().label('Password'),
+      username: Joi.string().email().required().label('Username'),
+      password: Joi.string().min(5).max(20).required().label('Password'),
+      name: Joi.string().required(),
       agreeTerms: Joi.any().valid(true).required().label('Agree terms')
    };
    
@@ -21,16 +22,17 @@ class LoginForm extends Form {
    render() {
       return (
          <div>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form onSubmit={this.handleSubmit}>
                {this.renderInput('username', 'Username')}
                {this.renderInput('password', 'Password', 'password')}
+               {this.renderInput('name', 'Name')}
                {this.renderCheckBox('agreeTerms', <span>I agree the <a>use of terms</a>.</span>)}
-               {this.renderButton('Login')}
+               {this.renderButton('Register')}
             </form>
          </div>
       );
    }
 }
-
-export default LoginForm;
+ 
+export default RegisterForm;

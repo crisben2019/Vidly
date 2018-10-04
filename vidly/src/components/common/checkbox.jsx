@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 const Checkbox = ({ name, children, value, onChange, error }) => {
    return (
       <React.Fragment>

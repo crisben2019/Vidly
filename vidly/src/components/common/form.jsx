@@ -3,7 +3,6 @@ import Joi from 'joi-browser';
 import Input from './input';
 import Checkbox from './checkbox';
 import DropDownList from './dropDownList';
-import _ from 'lodash';
 
 class Form extends Component {
    state = {
@@ -26,9 +25,9 @@ class Form extends Component {
       }
       console.log(error);
       const errors = {};
-      error.details.map(d => {
-         errors[d.path[0]] = d.message;
-      });
+      error.details.map(d => 
+         errors[d.path[0]] = d.message
+      );
       return errors;
    }
 

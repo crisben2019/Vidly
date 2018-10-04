@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Joi from 'joi-browser';
 import Form from './common/form';
 import { getGenres } from '../services/fakeGenreService';
@@ -22,6 +22,8 @@ export default class MovieForm extends Form {
          } else {
             this.props.history.replace('/not-found');
          }
+      }else{
+         this.setState({ genres });
       }
    }
 
