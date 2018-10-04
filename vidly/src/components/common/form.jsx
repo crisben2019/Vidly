@@ -23,7 +23,6 @@ class Form extends Component {
       if (!error) {
          return null;
       }
-      console.log(error);
       const errors = {};
       error.details.map(d => 
          errors[d.path[0]] = d.message
@@ -71,12 +70,12 @@ class Form extends Component {
    }
 
    renderDropDownList(name, label, data) {
+      console.log(data, this.state.data);
       return (
          <DropDownList 
             name={name} 
             label={label} 
             value={this.state.data[name]} 
-            defaultValue={this.state.data[name]} 
             onChange={this.handleChange} 
             error={this.state.errors[name]} 
             data={data}

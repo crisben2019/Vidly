@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getMovies } from "../services/fakeMovieService";
-import { getGenres } from '../services/fakeGenreService';
+import { getMovies, deleteMovie } from "../services/movieService";
+import { getGenres } from '../services/genreService';
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup"
 import { paginate } from "../utils/paginate";
 import MoviesTable from './moviesTable';
 import _ from 'lodash';
 import SearchBox from './common/searchBox';
+import { toast } from 'react-toastify';
 
 class Movies extends Component {
    state = {
@@ -20,12 +21,10 @@ class Movies extends Component {
       sortColumn: { path: 'title', order: 'asc' }
    }
 
-   componentDidMount = () => {
-      const genres = [{ _id: '', name: "All" }, ...getGenres()];
-      const movies = getMovies();
-      // for(let m of movies){
-      //    m.title = <Link to={'/movies/' + m._id}>{m.title}</Link>;
-      // }
+   componentDidMount = async () => {
+      const { data } = await getGenres();
+      const genres = [{ _id: '', name: "All" }, ...data];
+      const {data: movies} = await getMovies();
       this.setState({
          movies,
          genres,
@@ -33,10 +32,19 @@ class Movies extends Component {
       });
    }
 
-   handleDelete = (movie) => {
-      const movies = this.state.movies.filter(m => m._id !== movie._id);
-      this.setState({ movies: movies });
-      //this.state.movies = movies;
+   handleDelete = async (movie) => {
+      const originalMovies = this.state.movies;
+      const movies = originalMovies.filter(m => m._id !== movie._id);
+      this.setState({ movies });
+      try{
+         await deleteMovie(movie);
+      }catch(ex){
+         if(ex.response && ex.response.status === 404){
+            toast.error('This movie has already been deleted!');
+         }else{
+            this.setState({ originalMovies });
+         }
+      }
       this.handlePageChange(this.state.currentPage);
    }
 
@@ -64,11 +72,11 @@ class Movies extends Component {
 
       let filtered = movies;
 
-      if(this.state.searchText){
+      if (this.state.searchText) {
          filtered = filtered.filter(m => m.title.toUpperCase().indexOf(this.state.searchText.toUpperCase()) >= 0);
       }
 
-      if(selectedGenre && selectedGenre._id){
+      if (selectedGenre && selectedGenre._id) {
          filtered = filtered.filter(m => m.genre._id === selectedGenre._id);
       }
 
