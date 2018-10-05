@@ -24,7 +24,7 @@ class Movies extends Component {
    componentDidMount = async () => {
       const { data } = await getGenres();
       const genres = [{ _id: '', name: "All" }, ...data];
-      const {data: movies} = await getMovies();
+      const { data: movies } = await getMovies();
       this.setState({
          movies,
          genres,
@@ -36,13 +36,11 @@ class Movies extends Component {
       const originalMovies = this.state.movies;
       const movies = originalMovies.filter(m => m._id !== movie._id);
       this.setState({ movies });
-      try{
+      try {
          await deleteMovie(movie);
-      }catch(ex){
-         if(ex.response && ex.response.status === 404){
-            toast.error('This movie has already been deleted!');
-         }else{
-            this.setState({ originalMovies });
+      } catch (ex) {
+         if (ex.response && ex.response.status !== 404) {
+            this.setState({ movies: originalMovies });
          }
       }
       this.handlePageChange(this.state.currentPage);
@@ -92,6 +90,7 @@ class Movies extends Component {
    render() {
       const { pageSize, currentPage, sortColumn } = this.state;
       const { totalCount, data: movies } = this.getPagedData();
+      const { user } = this.props;
       // if (totalCount === 0) return <p>There are no movies in the database.</p>;
 
       return (
@@ -100,7 +99,7 @@ class Movies extends Component {
                <ListGroup items={this.state.genres} selectedItem={this.state.selectedGenre} onItemSelect={this.handleGenreSelect} />
             </div>
             <div className="col">
-               <Link className="btn btn-primary mb-2" to="/movies/new">Add</Link>
+               {user && user.isAdmin && <Link className="btn btn-primary mb-2" to="/movies/new">Add</Link>}
                <SearchBox onChange={this.handleSearch} value={this.state.searchText} />
                {/* <p>Showing {totalCount} movies in the database.</p> */}
                <MoviesTable sortColumn={sortColumn} movies={movies} onDelete={this.handleDelete} onLike={this.handleLike} onSort={this.handleSort} />

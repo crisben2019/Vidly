@@ -8,17 +8,22 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use(null, 
-   error => {
-      console.dir(error);
-      const expectedError = error.response && error.response.status >= 400 && error.response.status < 500;
-      if (!expectedError) {
-         logger.error(error.message);
+   ex => {
+      if(ex.response){
+         logger.error(ex.response.data);
+      }else{
+         logger.error(ex.message);
       }
-      return Promise.reject(error);
+      return Promise.reject(ex);
    }
 );
 
+function setJWT(jwt){
+   instance.defaults.headers.common['x-auth-token'] = jwt;
+}
+
 export default {
+   setJWT,
    get: instance.get,
    post: instance.post,
    put: instance.put,

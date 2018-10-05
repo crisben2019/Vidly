@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import auth from '../../services/authService';
 
 export default class TableBody extends Component {
 
@@ -24,7 +25,10 @@ export default class TableBody extends Component {
       return (
          <tbody>{data.map(item =>
             <tr key={this.createKey(item)}>{columns.map(column =>
-               <td key={this.createKey(item, column)}>{this.renderCell(item, column)}</td>
+               ((!column.login && !column.admin) 
+                  || (column.login && auth.getCurrentUser()) 
+                  || (column.admin && auth.getCurrentUser() && auth.getCurrentUser().isAdmin)) 
+               && <td key={this.createKey(item, column)}>{this.renderCell(item, column)}</td>
             )}</tr>
          )}
          </tbody>

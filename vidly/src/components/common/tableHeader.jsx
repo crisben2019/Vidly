@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import auth from '../../services/authService';
 
 export default class TableHeader extends Component {
 
@@ -17,11 +18,11 @@ export default class TableHeader extends Component {
    renderSortIcon = column => {
       const { sortColumn } = this.props;
 
-      if(column.path !== sortColumn.path) return null;
+      if (column.path !== sortColumn.path) return null;
 
-      if(sortColumn.order === 'asc') 
+      if (sortColumn.order === 'asc')
          return <i className="fa fa-sort-asc"></i>;
-      else 
+      else
          return <i className="fa fa-sort-desc"></i>;
    };
 
@@ -29,7 +30,10 @@ export default class TableHeader extends Component {
       return (
          <thead>
             <tr>{this.props.columns.map(column =>
-               <th className="clickable" key={column.path || column.key} onClick={() => this.raiseSort(column.path)}>
+               ((!column.login && !column.admin) 
+                  || (column.login && auth.getCurrentUser()) 
+                  || (column.admin && auth.getCurrentUser() && auth.getCurrentUser().isAdmin)) 
+               && <th className="clickable" key={column.path || column.key} onClick={() => this.raiseSort(column.path)}>
                   {column.label}
                   {this.renderSortIcon(column)}
                </th>

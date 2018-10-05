@@ -70,7 +70,6 @@ class Form extends Component {
    }
 
    renderDropDownList(name, label, data) {
-      console.log(data, this.state.data);
       return (
          <DropDownList 
             name={name} 

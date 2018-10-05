@@ -14,3 +14,17 @@
 {"message":"Unexpected token , in JSON at position 123","stack":"SyntaxError: Unexpected token , in JSON at position 123\n    at JSON.parse (<anonymous>)\n    at parse (D:\\Projects\\react\\vidly-api-node\\node_modules\\body-parser\\lib\\types\\json.js:89:19)\n    at D:\\Projects\\react\\vidly-api-node\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (D:\\Projects\\react\\vidly-api-node\\node_modules\\raw-body\\index.js:224:16)\n    at done (D:\\Projects\\react\\vidly-api-node\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (D:\\Projects\\react\\vidly-api-node\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"{\n    \"title\": \"A New Movie\",\n    \"numberInStock\": 6,\n    \"dailyRentalRate\": 5,\n    \"genreId\": \"5bb5baa6045e1c49dcb5e18d\"\n},","type":"entity.parse.failed","level":"error","timestamp":"2018-10-04T07:05:28.918Z"}
 {"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T07:08:57.930Z"}
 {"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T07:08:58.992Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T07:47:41.967Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T07:47:43.033Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T09:34:25.062Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T09:34:26.123Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T09:37:50.890Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T09:37:51.966Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T09:43:26.849Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T09:43:27.902Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-04T10:12:19.857Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-04T10:12:20.910Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-05T01:57:00.446Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-05T01:57:01.755Z"}
+{"level":"info","message":"Listening on port 3900...","timestamp":"2018-10-05T02:39:35.837Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly...","timestamp":"2018-10-05T02:39:36.881Z"}

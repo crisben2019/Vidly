@@ -10,7 +10,7 @@ export default class MoviesTable extends Component {
       { path: 'numberInStock', label: 'Stock' },
       { path: 'dailyRentalRate', label: 'Rate' },
       { key: 'like', content: movie => <Like liked={movie.liked} onClick={() => { this.props.onLike(movie) }} /> },
-      { key: 'delete', content: movie => <button onClick={() => this.props.onDelete(movie)} className="btn btn-warning btn-sm">Delete</button> }
+      { key: 'delete', admin: true, content: movie => <button onClick={() => this.props.onDelete(movie)} className="btn btn-warning btn-sm">Delete</button> }
    ];
 
    raiseSort = path => {
