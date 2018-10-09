@@ -26,7 +26,7 @@
    ```mongodb://<dbuser>:<dbpassword>@ds241578.mlab.com:41578/vidly```
 
 * Frontend:
-   [https://git.heroku.com/arcane-beyond-38080.git](https://git.heroku.com/arcane-beyond-38080.git)
+   [https://git.heroku.com/protected-lake-73572.git](https://git.heroku.com/protected-lake-73572.git)
 
 ### <span id="Git">Git</span>
 
