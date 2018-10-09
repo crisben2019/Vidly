@@ -1,9 +1,8 @@
 import axios from 'axios';
 import logger from './logService';
-import config from '../config/config';
 
 const instance = axios.create({
-   baseURL: config.apiBaseURL,
+   baseURL: process.env.REACT_APP_API_URL,
    timeout: 5000
 });
 
