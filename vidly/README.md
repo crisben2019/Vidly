@@ -15,10 +15,10 @@
 ### <span id="Links">Links</span>
 
 * Host: 
-   [https://arcane-beyond-38080.herokuapp.com/](https://arcane-beyond-38080.herokuapp.com/)
+   [https://protected-lake-73572.herokuapp.com/](https://protected-lake-73572.herokuapp.com/)
 
 * Git Repo: 
-   [https://git.heroku.com/arcane-beyond-38080.git](https://git.heroku.com/arcane-beyond-38080.git)
+   [https://git.heroku.com/protected-lake-73572.git](https://git.heroku.com/protected-lake-73572.git)
 
    [https://github.com/wheatup/Vidly.git](https://github.com/wheatup/Vidly.git)
 
