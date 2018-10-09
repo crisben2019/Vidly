@@ -1,63 +1,37 @@
-## Introduction
+# vidly-api
 
-This project is the backend of Vidly, an imaginary video rental app. I've used Vidly as an example in several of my online programming courses, such as:
+## Summary
 
-- https://codewithmosh.com/p/mastering-react
-- https://codewithmosh.com/p/the-complete-node-js-course
-- https://codewithmosh.com/p/asp-net-mvc
+<p>A demo project for exercising react & node.js/mongodb.</p>
 
-This is the implementation of Vidly in Node.js.
+* Starting time: ```Aug/30/2018```
 
-## Setup
+## Content
 
-Make sure to follow all these steps exactly as explained below. Do not miss any steps or you won't be able to run this application.
+* [Links](#Links)
 
-### Install MongoDB
+* [Git](#Git)
 
-To run this project, you need to install the latest version of MongoDB Community Edition first.
+### <span id="Links">Links</span>
 
-https://docs.mongodb.com/manual/installation/
+* Host: 
+   [https://peaceful-harbor-88275.herokuapp.com/](https://peaceful-harbor-88275.herokuapp.com/)
 
-Once you install MongoDB, make sure it's running.
+* Git Repo: 
+   [https://git.heroku.com/peaceful-harbor-88275.git](https://git.heroku.com/peaceful-harbor-88275.git)
 
-### Install the Dependencies
+   [https://github.com/wheatup/Vidly.git](https://github.com/wheatup/Vidly.git)
 
-Next, from the project folder, install the dependencies:
+* Database: 
+   ```mongodb://<dbuser>:<dbpassword>@ds241578.mlab.com:41578/vidly```
 
-    npm i
+### <span id="Git">Git</span>
 
-### Populate the Database
+* Stage changes: 
+   ```git add .```
 
-    node seed.js
+* Commit changes:
+   ```git commit -m "messages"```
 
-### Run the Tests
-
-You're almost done! Run the tests to make sure everything is working:
-
-    npm test
-
-All tests should pass.
-
-### Start the Server
-
-    node index.js
-
-This will launch the Node server on port 3900. If that port is busy, you can set a different point in config/default.json.
-
-Open up your browser and head over to:
-
-http://localhost:3900/api/genres
-
-You should see the list of genres. That confirms that you have set up everything successfully.
-
-### (Optional) Environment Variables
-
-If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.
-
-On Mac:
-
-    export vidly_jwtPrivateKey=yourSecureKey
-
-On Windows:
-
-    set vidly_jwtPrivateKey=yourSecureKey
+* Push changes:
+   ```git push heroku master```
